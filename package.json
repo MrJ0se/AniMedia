@@ -1,0 +1,22 @@
+{
+  "name": "animedia",
+  "version": "1.0.0",
+  "description": "Anime&Manga dynamic library site",
+  "main": "out/index.js",
+  "scripts": {
+    "start": "tsc --project src/node-transpile/tsconfig.json;cross-env NODE_ENV=development;node utils/runtime-transpiler-monkey-path.js",
+    "release": "tsc --project src/node-transpile/tsconfig.json;tsc --project src/web-transpile/tsconfig.json;node utils/release-package-strip.js;cross-env NODE_ENV=production;node out/index.js"
+  },
+  "author": "MrJose Mr_deleto",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "cross-env": "^7.0.3"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/express": "^4.17.11",
+    "typescript": "^4.2.3"
+  }
+}
