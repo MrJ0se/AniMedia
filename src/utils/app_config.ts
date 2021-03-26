@@ -1,0 +1,42 @@
+import path from 'path';
+let relativep = path.resolve(__dirname,'../..');
+export default {
+	relative:relativep,
+	out:path.resolve(relativep,"./out/site"),
+	transpileConfigs:[
+		{
+			inputDir:path.resolve(relativep,'./src/copy'),
+			outputDir:path.resolve(relativep,'./out/site'),
+			ts:false,
+			pug:false,
+			ejs:false,
+			sass:false,
+			less:false,
+			webp:false,
+			webpQuality:80,
+			copy:true,
+		},{
+			inputDir:path.resolve(relativep,'./src/tnode'),
+			outputDir:path.resolve(relativep,'./out/site'),
+			ts:true,
+			pug:false,
+			ejs:false,
+			sass:true,
+			less:true,
+			webp:true,
+			webpQuality:80,
+			copy:true,
+		},{
+			inputDir:path.resolve(relativep,'./src/tweb'),
+			outputDir:path.resolve(relativep,'./out/site'),
+			ts:true,
+			pug:true,
+			ejs:true,
+			sass:true,
+			less:true,
+			webp:true,
+			webpQuality:80,
+			copy:true,
+		}
+	]
+};

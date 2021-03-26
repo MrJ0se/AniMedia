@@ -16,28 +16,34 @@
 
 # Organização
 - out: resultado final, arquivos transpilados.
+	
+	- site: todos os arquivos copiados/transpilados/convertidos.
+
+	- utils: src/utils transpilado para js.
 
 - src
 	
 	- copy: arquivos que não sofreram nenhum tipo de preprocessamento.
 
-	- node-transpile: back-end, transpilados a cada execução do servidor.
+	- tnode: back-end, veja a tabela.
 	
-	- web-transpile: front-end, transpilados durante a execução do servidor (desenvolvimento).
+	- tweb: front-end, veja a tabela.
 
-- utils
+	- utils: scripts para transpilação/conversão e automação do build release.
 
-	- release-package-strip.js: cria um package.json para produção/release.
+# Conversões de 'src/x' para 'out/site'
 
-	- runtime-transpiler-monkey-path.js: usado no desenvolvimento, para transpilar durante a requisição, acelerando os testes (obs.: será implantado só no static() e no sendFile()).
+| pasta | typescript        | imagens            | ejs/pug            | sass/scss/less     |
+| ---   | ---               | ---                | ---                | ---                |
+| copy  | copiado           | copiado            | copiado            | copiado            |
+| tnode | transpilado p/ js | convertido p/ webp | copiado            | transpilado /p css |
+| tweb  | transpilado p/ js | convertido p/ webp | renderizado /p html| transpilado /p css |
 
 # Scripts do NPM
-- start: para desenvolvimento
+- start: roda o out/site/index.js.
 
-	transpila o código do back-end para out e executa.
+- watch: roda o watcher, que ira copiar/transpilar/converter os arquivos da pasta src para o out de acordo com as alterações feitas (recomendado mate-lo aberto enquanto programa, para ter um feedback imediato).
 
-	\*obs: neste modo fica a cargo do servidor transpila o front-end servido para o cliente durante a solicitação, para debugar rápidamente o front-end.
+- release: transpila com otimizações para produção.
 
-- release: para produção
-
-	transpila o código do back-end, o front-end e gerá out/package.json a partir de package.json pronto para produção utilizando utils/release-package-strip.js 
+- utils: transpila src/utils para out/utils 
