@@ -46,4 +46,6 @@
 
 - release: transpila com otimizações para produção.
 
-- utils: transpila src/utils para out/utils 
+- utils: transpila src/utils para out/utils.
+
++ \*obs: use npm run < script >

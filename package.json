@@ -5,6 +5,7 @@
   "main": "out/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development;node out/site/index.js",
+    "watch": "node out/utils/app_watch.js",
     "release": "node out/utils/app_release.js",
     "utils": "tsc --project src/utils"
   },
