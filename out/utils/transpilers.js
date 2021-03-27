@@ -33,6 +33,7 @@ class Transpilers {
         this.__watchPedentDelete = [];
         //Livre|Aguardando|Transpilando|Pendentes
         this.__watchState = "L";
+        createDir(config.inputDir);
         this.config = config;
         this.configFilePath = path_1.default.resolve(this.config.inputDir, 'tsconfig.json');
         if (config.ts) {

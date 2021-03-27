@@ -2,7 +2,9 @@ import cluster from 'cluster';
 import os from 'os';
 import express from 'express';
 import bodyParser from 'body-parser';
-
+import helmet from 'helmet';
+import fs from 'fs';
+import https from 'https';
 
 if (process.env.NODE_ENV=='development') {
 	run();
@@ -23,10 +25,30 @@ if (process.env.NODE_ENV=='development') {
 	}
 }
 
-function run () {
+//rredirecionar os usuario de http para https
+function runRelay() {
 	var app = express();
 
-	app.use(express.static(__dirname+'/public'));
+	app.use(helmet());
+	app.use('*', function(req, res) {  
+    	res.redirect('https://' + req.headers.host + req.url);
+	});
 
 	app.listen(80);
+}
+
+function run () {
+	runRelay();
+	var app = express();
+
+	app.use(helmet());
+	app.use(express.static(__dirname+'/public'));
+
+	//iniciando para https
+	var ssl = {
+		key: fs.readFileSync(__dirname + '/ssl_temp.key'),
+		cert: fs.readFileSync(__dirname + '/ssl_temp.crt')
+	};
+	var server = https.createServer(ssl, app);
+	server.listen(443)
 }

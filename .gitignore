@@ -76,5 +76,5 @@ typings/
 .fusebox/
 
 /out/site/*
-
 package-lock.json
+pnpm-lock.yaml

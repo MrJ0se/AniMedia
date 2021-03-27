@@ -47,6 +47,7 @@ export class Transpilers {
 	}
 
 	constructor(config:TranspilersConfig) {
+		createDir(config.inputDir);
 		this.config = config;
 		this.configFilePath = path.resolve(this.config.inputDir,'tsconfig.json');
 		if (config.ts) {
