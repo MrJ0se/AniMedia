@@ -23,7 +23,7 @@ deleteFolderContent(app_config_1.default.out);
     if (npm_package_json.devDependencies)
         delete npm_package_json.devDependencies;
     npm_package_json.scripts = {
-        'start': 'cross-env NODE_ENV=production;node index.js'
+        'start': 'cross-env NODE_ENV=production node index.js'
     };
     fs_1.default.writeFileSync(path_1.default.resolve(app_config_1.default.out, './package.json'), 
     //null,2 é para formatar o JSON

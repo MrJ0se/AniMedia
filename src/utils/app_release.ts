@@ -15,7 +15,7 @@ deleteFolderContent(config.out)
 		delete npm_package_json.devDependencies;
 
 	npm_package_json.scripts = {
-		'start':'cross-env NODE_ENV=production;node index.js'
+		'start':'cross-env NODE_ENV=production node index.js'
 	};
 
 	fs.writeFileSync(path.resolve(config.out,'./package.json'),

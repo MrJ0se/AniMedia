@@ -4,7 +4,7 @@
   "description": "Anime&Manga dynamic library site",
   "main": "out/index.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development;node out/site/index.js",
+    "start": "cross-env NODE_ENV=development node out/site/index.js",
     "watch": "node out/utils/app_watch.js",
     "release": "node out/utils/app_release.js",
     "utils": "tsc --project src/utils"
@@ -12,17 +12,19 @@
   "author": "MrJose Mr_deleto",
   "license": "UNLICENSED",
   "dependencies": {
-    "@types/chokidar": "^2.1.3",
     "body-parser": "^1.19.0",
     "cross-env": "^7.0.3",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "pug": "^3.0.2"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.0",
+    "@types/chokidar": "^2.1.3",
     "@types/ejs": "^3.0.6",
     "@types/express": "^4.17.11",
+    "@types/express-session": "^1.17.3",
     "@types/less": "^3.0.2",
     "@types/pug": "^2.0.4",
     "@types/sass": "^1.16.0",
