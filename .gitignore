@@ -76,3 +76,5 @@ typings/
 .fusebox/
 
 /out/site/*
+
+package-lock.json
