@@ -201,6 +201,9 @@ export class Transpilers {
 		return '';
 	}
 	async transpileFiles(fileNames: string[]) {
+		fileNames.forEach((fname)=>{
+			this.errors = this.errors.filter((er)=>er.fullpath!=fname);
+		});
 		if (this.tsConfig != undefined) {
 			this.errors.push(
 				...compile_ts(
@@ -297,6 +300,7 @@ export class Transpilers {
 		if (this.config.copy) {
 			fileNames.forEach((x)=>{
 				let outfilename = buildPath2(x, this.config.inputDir, this.config.outputDir);
+				createDir(path.resolve(outfilename, '..'));
 				fs.copyFileSync(x, outfilename);
 			});
 		}
